@@ -41,7 +41,7 @@ public class NASALibraryController {
 
     @GetMapping("/nasa/library/showAssetSearch")
     public String showAssetSearch() {
-        return "/nasa/library/asset";
+        return "nasa/library/asset";
     }
 
     @GetMapping("/nasa/library/getasset")
@@ -57,7 +57,7 @@ public class NASALibraryController {
 
     @GetMapping("/nasa/library/showMetadataSearch")
     public String showMetadataSearch() {
-        return "/nasa/library/metadata";
+        return "nasa/library/metadata";
     }
 
     @GetMapping("/nasa/library/getmetadata")
@@ -73,7 +73,7 @@ public class NASALibraryController {
 
     @GetMapping("/nasa/library/showCaptionSearch")
     public String showCaptionSearch() {
-        return "/nasa/library/caption";
+        return "nasa/library/caption";
     }
 
     @GetMapping("/nasa/library/getcaptions")
