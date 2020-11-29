@@ -15,7 +15,7 @@ import java.util.Collections;
 
 @Service
 public class StarService {
-    private final String url = "http://localhost:8000/stars";
+    private final String url = "https://ster-api.herokuapp.com/stars";
 
     public StarService() {}
 
