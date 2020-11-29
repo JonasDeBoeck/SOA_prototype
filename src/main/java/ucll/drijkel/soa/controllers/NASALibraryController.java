@@ -20,12 +20,12 @@ public class NASALibraryController {
 
     @GetMapping("/nasa/library")
     public String showLibraryHome() {
-        return "/nasa/library/index";
+        return "nasa/library/index";
     }
 
     @GetMapping("/nasa/library/showSearch")
     public String showSearch() {
-        return "/nasa/library/search";
+        return "nasa/library/search";
     }
 
     @GetMapping("/nasa/library/getoperation")
@@ -33,7 +33,7 @@ public class NASALibraryController {
         JSONObject result = service.getOperation(operation);
         if (result == null) {
             model.addAttribute("error", "The given operation wasn't found");
-            return "/nasa/library/index";
+            return "nasa/library/index";
         }
         model.addAttribute("result", result);
         return "result";
@@ -49,7 +49,7 @@ public class NASALibraryController {
         JSONObject result = service.getAsset(asset);
         if (result == null) {
             model.addAttribute("error", "The given NASA ID wasn't found");
-            return "/nasa/library/index";
+            return "nasa/library/index";
         }
         model.addAttribute("result", result);
         return "result";
@@ -65,7 +65,7 @@ public class NASALibraryController {
         JSONObject result = service.getMetadata(asset);
         if (result == null) {
             model.addAttribute("error", "The given NASA ID wasn't found");
-            return "/nasa/library/index";
+            return "nasa/library/index";
         }
         model.addAttribute("result", result);
         return "result";
@@ -82,19 +82,19 @@ public class NASALibraryController {
             JSONObject result = service.getCaptions(asset);
             if (result == null) {
                 model.addAttribute("error", "The given NASA ID wasn't found");
-                return "/nasa/library/index";
+                return "nasa/library/index";
             }
             model.addAttribute("result", result);
             return "result";
         } catch (RestException e) {
             model.addAttribute("error", e.getMessage());
-            return "/nasa/library/index";
+            return "nasa/library/index";
         }
     }
 
     @GetMapping("/nasa/library/showNasaId")
     public String showNasaId() {
-        return "/nasa/library/nasaid";
+        return "nasa/library/nasaid";
     }
 
     @GetMapping("/nasa/library/getnasaid")
@@ -102,7 +102,7 @@ public class NASALibraryController {
         JSONObject result = service.getNasaId(operation);
         if (result == null) {
             model.addAttribute("error", "The given operation wasn't found");
-            return "/nasa/library/index";
+            return "nasa/library/index";
         }
         model.addAttribute("result", result);
         return "result";
