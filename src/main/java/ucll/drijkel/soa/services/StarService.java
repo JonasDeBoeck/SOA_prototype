@@ -117,7 +117,7 @@ public class StarService {
         map.add("username", username);
         map.add("password", password);
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
-        ResponseEntity<String> response = restTemplate.postForEntity( "http://localhost:8000/account/register", request , String.class );
+        ResponseEntity<String> response = restTemplate.postForEntity( "https://ster-api.herokuapp.com/account/register", request , String.class );
     }
 
     public JSONObject getKey(String username, String password) {
@@ -128,7 +128,7 @@ public class StarService {
         map.add("username", username);
         map.add("password", password);
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
-        ResponseEntity<String> response = restTemplate.postForEntity( "http://localhost:8000/api-token-auth", request , String.class );
+        ResponseEntity<String> response = restTemplate.postForEntity( "http://ster-api.herokuapp.com/api-token-auth", request , String.class );
         return new JSONObject(response.getBody());
     }
 }
