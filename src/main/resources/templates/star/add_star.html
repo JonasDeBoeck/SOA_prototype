@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Add star</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top justify-content-between">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/star">Star API</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="d-flex justify-content-center mt-3">
+    <main class="w-75">
+        <form action="/star/addstar" method="post" class="w-100" th:object="${star}">
+            <div>
+                <p th:errors="*{name}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{star_system}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{spectral_class}" class="alert alert-danger" role="alert"></p>
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" th:field="*{name}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="star_system">Star system:</label>
+                <input type="text" th:field="*{star_system}" required class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="spectral_class">Spectral class:</label>
+                <select th:field="*{spectral_class}" required class="form-control">
+                    <option value="O">O</option>
+                    <option value="B">B</option>
+                    <option value="A">A</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
+                    <option value="K">K</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="T">T</option>
+                    <option value="Y">Y</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="year_of_discovery">Year of discovery:</label>
+                <input type="number" th:field="*{year_of_discovery}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="distance">Distance:</label>
+                <input type="number" th:field="*{distance}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="apparent_magnitude">Apparent magnitude:</label>
+                <input type="number" th:field="*{apparent_magnitude}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="absolut_magnitude">Absolute magnitude:</label>
+                <input type="number" th:field="*{absolut_magnitude}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="parallax">Parallax:</label>
+                <input type="number" th:field="*{parallax}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="api_key">API key:</label>
+                <input type="text" id="api_key" name="api_key" required class="form-control">
+            </div>
+            <input type="submit" class="btn btn-primary mb-2"/>
+        </form>
+    </main>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</body>
+</html>
