@@ -109,11 +109,17 @@ public class StarService {
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.set("Authorization", "Token " + apiKey);
         HttpEntity<StarDetailed> request = new HttpEntity<>(star, headers);
-        ResponseEntity<StarDetailed> result = restTemplate.exchange(url + "/" + star.getId() + "/detailed", HttpMethod.PUT, request, StarDetailed.class);
-        if (result.getStatusCode() == HttpStatus.OK) {
-            return new JSONObject(result.getBody());
-        } else {
-            return null;
+        try {
+            ResponseEntity<StarDetailed> result = restTemplate.exchange(url + "/" + star.getId() + "/detailed", HttpMethod.PUT, request, StarDetailed.class);
+            if (result.getStatusCode() == HttpStatus.OK) {
+                return new JSONObject(result.getBody());
+            } else {
+                return null;
+            }
+        } catch (HttpClientErrorException.NotFound e) {
+            throw new RestException("Star not found");
+        } catch (HttpClientErrorException.Unauthorized ex) {
+            throw new RestException("Unauthorized");
         }
     }
 
