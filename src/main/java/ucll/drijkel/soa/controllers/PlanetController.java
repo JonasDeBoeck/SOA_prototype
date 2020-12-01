@@ -87,13 +87,17 @@ public class PlanetController {
             model.addAttribute("planet",planet);
             return "planet/add_planet";
         }else{
-            JSONObject result = planetService.addPlanet(planet,webrequest.getParameter("api_key"));
-            if (result != null){
-                model.addAttribute("result",result);
-                return "result";
-            }
-            else{
-                model.addAttribute("error","An error occured");
+            try {
+                JSONObject result = planetService.addPlanet(planet,webrequest.getParameter("api_key"));
+                if (result != null){
+                    model.addAttribute("result",result);
+                    return "result";
+                }
+                else{
+                    return "planet/planets_index";
+                }
+            }catch (RestException e){
+                model.addAttribute("error",e.getMessage());
                 return "planet/planets_index";
             }
         }
@@ -120,12 +124,17 @@ public class PlanetController {
         if (bindingResult.hasErrors()){
             return "planet/edit_planet";
         }
-        JSONObject result = planetService.updatePlanet(planet,webRequest.getParameter("api_key"));
-        if (result != null){
-            model.addAttribute("result",result);
-            return "result";
-        }else{
-            model.addAttribute("error","An error occured");
+        try {
+            JSONObject result = planetService.updatePlanet(planet, webRequest.getParameter("api_key"));
+            if (result != null){
+                model.addAttribute("result",result);
+                return "result";
+            }else{
+                model.addAttribute("error","An error occured");
+                return "planet/planets_index";
+            }
+        }catch (RestException rest){
+            model.addAttribute("error", rest.getMessage());
             return "planet/planets_index";
         }
     }

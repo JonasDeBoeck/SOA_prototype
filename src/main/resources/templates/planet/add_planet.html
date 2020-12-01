@@ -49,8 +49,8 @@
         <form action="/planets/addPlanet" method="post" class="w-100" th:object="${planet}" novalidate>
             <div>
                 <p th:errors="*{name}" class="alert alert-danger" role="alert"></p>
-                <p th:errors="*{diameter}" class="alert alert-danger" role="alert"></p>
-                <p th:errors="*{moons}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{rotation_speed}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{atmosphere_main_components}" class="alert alert-danger" role="alert"></p>
             </div>
             <div class="form-group">
                 <label for="name">Name:</label>

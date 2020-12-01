@@ -1,15 +1,26 @@
 package ucll.drijkel.soa.model;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class Planet {
 
     private int id;
+    @NotEmpty(message = "Naam mag niet leeg zijn")
     private String name;
+    @NotNull
     private int distance_from_sun;
+    @NotNull
     private int period_of_revolution;
+    @NotEmpty(message = "Rotation speed mag niet leeg zijn")
     private String rotation_speed;
+    @NotNull
     private int diameter;
+    @NotEmpty(message = "Atmosphere main components mag niet leeg zijn")
     private String atmosphere_main_components;
+    @NotNull
     private int moons;
+    @NotNull
     private int rings;
 
     public Planet(){}

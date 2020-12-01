@@ -94,7 +94,7 @@ public class NASALibraryController {
 
     @GetMapping("/nasa/library/showNasaId")
     public String showNasaId() {
-        return "/nasa/library/nasaid";
+        return "nasa/library/nasaid";
     }
 
     @GetMapping("/nasa/library/getnasaid")

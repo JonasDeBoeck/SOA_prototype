@@ -7,6 +7,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import ucll.drijkel.soa.model.Planet;
 import ucll.drijkel.soa.model.RestException;
@@ -48,9 +49,15 @@ public class PlanetService {
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.set("Authorization", "Token " + apiKey);
         HttpEntity<Planet> request = new HttpEntity<>(planet,headers);
-        ResponseEntity<Planet> result = restTemplate.postForEntity(url+"/",request,Planet.class);
-        if (result.getStatusCode() == HttpStatus.CREATED){
-            return new JSONObject(result.getBody());
+        try{
+            ResponseEntity<Planet> result = restTemplate.postForEntity(url+"/",request,Planet.class);
+            if (result.getStatusCode() == HttpStatus.CREATED){
+                return new JSONObject(result.getBody());
+            }
+        }catch (HttpClientErrorException.Unauthorized e){
+            throw new RestException("Unauthorized");
+        }catch (HttpClientErrorException.BadRequest e){
+            throw new RestException("Vul alle velden in");
         }
         return null;
     }
@@ -83,10 +90,17 @@ public class PlanetService {
         headers.set("Authorization", "Token " + apiKey);
         HttpEntity<Planet> request = new HttpEntity<>(updatedPlanet, headers);
         ResponseEntity<Planet> result = restTemplate.exchange(url + "/" + updatedPlanet.getId() +"/",HttpMethod.PUT, request, Planet.class);
-        System.out.println(result.getStatusCode());
-        if (result.getStatusCode() == HttpStatus.OK){
-            return new JSONObject(result.getBody());
+        try {
+            if (result.getStatusCode() == HttpStatus.OK){
+                return new JSONObject(result.getBody());
+            }
+        } catch (
+                HttpClientErrorException.NotFound e) {
+            throw new RestException("Planet not found");
+        } catch (HttpClientErrorException.Unauthorized ex) {
+            throw new RestException("Unauthorized");
         }
+
         return null;
     }
 
