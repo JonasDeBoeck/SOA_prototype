@@ -165,9 +165,14 @@ public class StarController {
     public String register(WebRequest webRequest, Model model) {
         String username = webRequest.getParameter("username");
         String password = webRequest.getParameter("password");
-        starService.register(username, password);
-        model.addAttribute("info", "Account created successfully, now you can go and request your api-key");
-        return "star/stars_index";
+        try {
+            starService.register(username, password);
+            model.addAttribute("info", "Account created successfully, now you can go and request your api-key");
+            return "star/stars_index";
+        } catch(RestException e) {
+            model.addAttribute("error", "Ann account with the given username already exists");
+            return "star/stars_index";
+        }
     }
 
     @GetMapping("/star/showgetkey")

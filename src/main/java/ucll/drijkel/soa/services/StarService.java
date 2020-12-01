@@ -125,7 +125,11 @@ public class StarService {
         map.add("username", username);
         map.add("password", password);
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
-        ResponseEntity<String> response = restTemplate.postForEntity( "https://ster-api.herokuapp.com/account/register", request , String.class );
+        try {
+            ResponseEntity<String> response = restTemplate.postForEntity("https://ster-api.herokuapp.com/account/register", request, String.class);
+        } catch (HttpClientErrorException.BadRequest e) {
+            throw new RestException();
+        }
     }
 
     public JSONObject getKey(String username, String password) {
