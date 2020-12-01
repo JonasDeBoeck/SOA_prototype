@@ -91,12 +91,17 @@ public class StarController {
             model.addAttribute("star", star);
             return "star/add_star";
         }
-        JSONObject result = starService.addStar(star, webRequest.getParameter("api_key"));
-        if (result != null) {
-            model.addAttribute("result", result);
-            return "result";
-        } else {
-            model.addAttribute("error", "An error occured");
+        try {
+            JSONObject result = starService.addStar(star, webRequest.getParameter("api_key"));
+            if (result != null) {
+                model.addAttribute("result", result);
+                return "result";
+            } else {
+                model.addAttribute("error", "An error occured");
+                return "star/stars_index";
+            }
+        } catch (RestException e) {
+            model.addAttribute("error", e.getMessage());
             return "star/stars_index";
         }
     }

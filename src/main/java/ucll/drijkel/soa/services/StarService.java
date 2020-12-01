@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import ucll.drijkel.soa.model.RestException;
 import ucll.drijkel.soa.model.Star;
@@ -70,11 +71,15 @@ public class StarService {
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.set("Authorization", "Token " + apiKey);
         HttpEntity<StarDetailed> request = new HttpEntity<>(star, headers);
-        ResponseEntity<StarDetailed> result = restTemplate.postForEntity(url + "/detailed", request, StarDetailed.class);
-        if (result.getStatusCode() == HttpStatus.CREATED) {
-            return new JSONObject(result.getBody());
-        } else {
-            return null;
+        try {
+            ResponseEntity<StarDetailed> result = restTemplate.postForEntity(url + "/detailed", request, StarDetailed.class);
+            if (result.getStatusCode() == HttpStatus.CREATED) {
+                return new JSONObject(result.getBody());
+            } else {
+                return null;
+            }
+        } catch (RestClientException e) {
+            throw new RestException("Unauthorized");
         }
     }
 
