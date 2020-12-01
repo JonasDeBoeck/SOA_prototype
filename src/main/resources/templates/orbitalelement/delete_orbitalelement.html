@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" class="h-100">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Index</title>
+    <title>Delete orbitalelement</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -16,7 +16,7 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
 </head>
-<body class="h-100">
+<body>
 <header>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top justify-content-between">
         <div>
@@ -30,27 +30,35 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/orbitalelements">OrbitalElements API</a>
                 </li>
-                    <div class="dropdown nav-item">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            NASA API's
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="/nasa/library">NASA Image and Video Library</a>
-                            <a class="dropdown-item" href="/nasa/EONET">NASA EONOET</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
+                <div class="dropdown nav-item">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        NASA API's
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="/nasa/library">NASA Image and Video Library</a>
+                        <a class="dropdown-item" href="/nasa/EONET">NASA EONOET</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
                     </div>
+                </div>
             </ul>
         </div>
     </nav>
 </header>
-<div class="d-flex justify-content-center align-items-center h-75">
-    <main class="w-100">
-        <div class="d-flex justify-content-center flex-column">
-            <p class="h1 align-self-center" id="welcome">Welcome</p>
-            <p class="h2 align-self-center" id="welcome2">You can navigate to a certain api using the navigation bar at the top</p>
-        </div>
+<div class="d-flex justify-content-center mt-3">
+    <main class="w-75">
+        <form action="/orbitalelements/deleteOrbitalElement" method="post" class="w-100">
+            <p class="form-group">
+                <label for="id">OrbitalElement id:</label>
+                <input type="number" id="id" name="id" required class="form-control">
+            </p>
+            <p class="form-group">
+                <label for="api_key">API key:</label>
+                <input type="text" id="api_key" name="api_key" required class="form-control">
+            </p>
+            <input type="submit" class="btn btn-primary mb-2"/>
+        </form>
     </main>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </body>
 </html>

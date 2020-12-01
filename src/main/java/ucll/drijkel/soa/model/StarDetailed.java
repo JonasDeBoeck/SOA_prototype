@@ -13,13 +13,13 @@ public class StarDetailed {
     private String star_system;
     @NotEmpty(message = "Spectral class cannot be empty")
     private String spectral_class;
-    private int year_of_discovery;
-    private int id;
+    private Integer year_of_discovery;
+    private Integer id;
     @NotNull (message = "distance cannot be empty")
-    private double distance;
-    private double apparent_magnitude;
-    private double absolut_magnitude;
-    private double parallax;
+    private Double distance;
+    private Double apparent_magnitude;
+    private Double absolut_magnitude;
+    private Double parallax;
 
     public StarDetailed() {}
 
@@ -35,14 +35,6 @@ public class StarDetailed {
                 "spectral_class:" + spectral_class  +
                 "parallax:" + parallax +
                 '}';
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -69,43 +61,51 @@ public class StarDetailed {
         this.spectral_class = spectral_class;
     }
 
-    public int getYear_of_discovery() {
+    public Integer getYear_of_discovery() {
         return year_of_discovery;
     }
 
-    public void setYear_of_discovery(int year_of_discovery) {
+    public void setYear_of_discovery(Integer year_of_discovery) {
         this.year_of_discovery = year_of_discovery;
     }
 
-    public double getDistance() {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Double getDistance() {
         return distance;
     }
 
-    public void setDistance(double distance) {
+    public void setDistance(Double distance) {
         this.distance = distance;
     }
 
-    public double getApparent_magnitude() {
+    public Double getApparent_magnitude() {
         return apparent_magnitude;
     }
 
-    public void setApparent_magnitude(double apparent_magnitude) {
+    public void setApparent_magnitude(Double apparent_magnitude) {
         this.apparent_magnitude = apparent_magnitude;
     }
 
-    public double getAbsolut_magnitude() {
+    public Double getAbsolut_magnitude() {
         return absolut_magnitude;
     }
 
-    public void setAbsolut_magnitude(double absolut_magnitude) {
+    public void setAbsolut_magnitude(Double absolut_magnitude) {
         this.absolut_magnitude = absolut_magnitude;
     }
 
-    public double getParallax() {
+    public Double getParallax() {
         return parallax;
     }
 
-    public void setParallax(double parallax) {
+    public void setParallax(Double parallax) {
         this.parallax = parallax;
     }
 }

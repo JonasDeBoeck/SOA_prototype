@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Add orbitalelement</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top justify-content-between">
+        <div>
+            <ul class="navbar-nav d-flex flex-row">
+                <li class="nav-item">
+                    <a class="nav-link" href="/star">Star API</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/planets">Planets API</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/orbitalelements">OrbitalElements API</a>
+                </li>
+                <div class="dropdown nav-item">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        NASA API's
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="/nasa/library">NASA Image and Video Library</a>
+                        <a class="dropdown-item" href="/nasa/EONET">NASA EONOET</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="d-flex justify-content-center mt-3">
+    <main class="w-75">
+        <form action="/orbitalelements/addOrbitalElement" method="post" class="w-100" th:object="${orbitalelement}">
+            <div>
+                <p th:errors="*{object}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{epoch}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{tp}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{e}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{i}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{w}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{node}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{q}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{ql}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{p}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{moid}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{ref}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{object_name}" class="alert alert-danger" role="alert"></p>
+            </div>
+            <div class="form-group">
+                <label for="object">Object:</label>
+                <input type="text" th:field="*{object}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="epoch">Epoch:</label>
+                <input type="number" th:field="*{epoch}" required class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="tp">TP:</label>
+                <input type="number" th:field="*{tp}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="e">e:</label>
+                <input type="number" th:field="*{e}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="i">I:</label>
+                <input type="number" th:field="*{i}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="w">w:</label>
+                <input type="number" th:field="*{w}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="node">Node:</label>
+                <input type="number" th:field="*{node}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="q">q:</label>
+                <input type="number" th:field="*{q}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="ql">Ql:</label>
+                <input type="number" th:field="*{ql}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="p">P:</label>
+                <input type="number" th:field="*{p}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="moid">MOID:</label>
+                <input type="number" th:field="*{moid}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="a1">A1:</label>
+                <input type="number" th:field="*{a1}">
+            </div>
+            <div class="form-group">
+                <label for="a2">A2:</label>
+                <input type="number" th:field="*{a2}">
+            </div>
+            <div class="form-group">
+                <label for="a3">A3:</label>
+                <input type="number" th:field="*{a3}">
+            </div>
+            <div class="form-group">
+                <label for="dt">DT:</label>
+                <input type="number" th:field="*{dt}">
+            </div>
+            <div class="form-group">
+                <label for="ref">ref:</label>
+                <input type="text" th:field="*{ref}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="object_name">Object_name:</label>
+                <input type="text" th:field="*{object_name}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="api_key">API key:</label>
+                <input type="text" id="api_key" name="api_key" required class="form-control">
+            </div>
+            <input type="submit" class="btn btn-primary mb-2"/>
+        </form>
+    </main>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</body>
+</html>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 import ucll.drijkel.soa.model.RestException;
+import ucll.drijkel.soa.model.Star;
 import ucll.drijkel.soa.model.StarDetailed;
 import ucll.drijkel.soa.services.StarService;
 import javax.validation.Valid;
@@ -36,9 +37,14 @@ public class StarController {
 
     @GetMapping("/star/getstar")
     public String getStar(Model model, @RequestParam("ster_id") int id) {
-        JSONObject star = new JSONObject(starService.getStar(id));
-        model.addAttribute("result", star);
-        return "result";
+        Star res = starService.getStar(id);
+        if (res != null) {
+            model.addAttribute("result", new JSONObject(res));
+            return "result";
+        } else {
+            model.addAttribute("error", "Star not found");
+            return "star/stars_index";
+        }
     }
 
     @GetMapping("/star/showgetstardetailed")
@@ -48,9 +54,14 @@ public class StarController {
 
     @GetMapping("/star/getstardetailed")
     public String getStardetailed(Model model, @RequestParam("ster_id") int id) {
-        JSONObject star = new JSONObject(starService.getStarDetailed(id));
-        model.addAttribute("result", star);
-        return "result";
+        StarDetailed star = starService.getStarDetailed(id);
+        if (star != null) {
+            model.addAttribute("result", new JSONObject(star));
+            return "result";
+        } else {
+            model.addAttribute("error", "Star not found");
+            return "star/stars_index";
+        }
     }
 
     @GetMapping("/star/getstars")

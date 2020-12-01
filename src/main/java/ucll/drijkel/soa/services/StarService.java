@@ -21,9 +21,12 @@ public class StarService {
 
     public Star getStar(int id) {
         RestTemplate restTemplate = new RestTemplate();
-        Star result = restTemplate.getForObject(url + "/" + id, Star.class);
-        assert result != null;
-        return result;
+        try {
+            Star result = restTemplate.getForObject(url + "/" + id, Star.class);
+            return result;
+        } catch (HttpClientErrorException.NotFound e) {
+            return null;
+        }
     }
 
     public StarDetailed getStarDetailed(int id) {
@@ -128,7 +131,7 @@ public class StarService {
         map.add("username", username);
         map.add("password", password);
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
-        ResponseEntity<String> response = restTemplate.postForEntity( "http://ster-api.herokuapp.com/api-token-auth", request , String.class );
+        ResponseEntity<String> response = restTemplate.postForEntity( "https://ster-api.herokuapp.com/api-token-auth", request , String.class );
         return new JSONObject(response.getBody());
     }
 }

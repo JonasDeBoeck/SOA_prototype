@@ -155,7 +155,4 @@ public class PlanetController {
         model.addAttribute("result", planet);
         return "result";
     }
-
-
-
 }

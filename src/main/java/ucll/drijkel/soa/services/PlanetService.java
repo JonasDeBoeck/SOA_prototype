@@ -17,21 +17,21 @@ import java.util.Collections;
 
 @Service
 public class PlanetService {
-    private final String url = "http://localhost:8001/api/planets";
+    private final String url = "https://soa-planet-api.herokuapp.com/api/planets";
 
 
     public PlanetService(){}
 
     public Planet getPlanet(int id){
         RestTemplate restTemplate = new RestTemplate();
-        Planet result = restTemplate.getForObject(url+"/"+id, Planet.class);
+        Planet result = restTemplate.getForObject(url+"/"+id +"/", Planet.class);
         assert result != null;
         return result;
     }
 
     public JSONObject getPlanets(){
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Planet[]> response = restTemplate.getForEntity(url, Planet[].class);
+        ResponseEntity<Planet[]> response = restTemplate.getForEntity(url+"/", Planet[].class);
         Planet[] planets = response.getBody();
         JSONObject wrapper = new JSONObject();
         assert planets != null;
@@ -98,7 +98,7 @@ public class PlanetService {
         map.add("username", username);
         map.add("password", password);
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
-        ResponseEntity<String> response = restTemplate.postForEntity( "http://localhost:8001/api/register", request , String.class );
+        ResponseEntity<String> response = restTemplate.postForEntity( "https://soa-planet-api.herokuapp.com/api/register", request , String.class );
         System.out.println(response.getStatusCode());
     }
 
@@ -110,7 +110,7 @@ public class PlanetService {
         map.add("username", username);
         map.add("password", password);
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
-        ResponseEntity<String> response = restTemplate.postForEntity( "http://localhost:8001/api/api-token-auth", request , String.class );
+        ResponseEntity<String> response = restTemplate.postForEntity( "https://soa-planet-api.herokuapp.com/api/api-token-auth", request , String.class );
         return new JSONObject(response.getBody());
     }
 
