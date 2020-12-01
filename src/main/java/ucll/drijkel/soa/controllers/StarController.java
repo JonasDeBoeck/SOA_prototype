@@ -175,7 +175,12 @@ public class StarController {
         String username = webRequest.getParameter("username");
         String password = webRequest.getParameter("password");
         JSONObject key = starService.getKey(username, password);
-        model.addAttribute("result", key);
-        return "result";
+        if (key != null) {
+            model.addAttribute("result", key);
+            return "result";
+        } else {
+            model.addAttribute("error", "The provided credentials were not valid");
+            return "star/stars_index";
+        }
     }
 }

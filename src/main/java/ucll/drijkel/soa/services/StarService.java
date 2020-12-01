@@ -124,14 +124,18 @@ public class StarService {
     }
 
     public JSONObject getKey(String username, String password) {
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        MultiValueMap<String, String> map= new LinkedMultiValueMap<String, String>();
-        map.add("username", username);
-        map.add("password", password);
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
-        ResponseEntity<String> response = restTemplate.postForEntity( "https://ster-api.herokuapp.com/api-token-auth", request , String.class );
-        return new JSONObject(response.getBody());
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+            MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
+            map.add("username", username);
+            map.add("password", password);
+            HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
+            ResponseEntity<String> response = restTemplate.postForEntity("https://ster-api.herokuapp.com/api-token-auth", request, String.class);
+            return new JSONObject(response.getBody());
+        } catch (HttpClientErrorException.BadRequest e) {
+            return null;
+        }
     }
 }
