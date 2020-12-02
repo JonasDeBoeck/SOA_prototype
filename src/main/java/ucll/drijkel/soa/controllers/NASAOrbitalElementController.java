@@ -21,7 +21,7 @@ public class NASAOrbitalElementController {
 
     @GetMapping("/nasa/orbitalelements")
     public String showOrbitalElements() {
-        return "nasa/orbitalElement/index.html";
+        return "nasa/OrbitalElement/index.html";
     }
 
     @GetMapping("/nasa/orbitalelements/showAllOrbitalElements")
@@ -33,7 +33,7 @@ public class NASAOrbitalElementController {
 
     @GetMapping("/nasa/orbitalelements/showGetOrbitalElementByObject")
     public String showGetByObject() {
-        return "nasa/orbitalElement/get_orbitalelement";
+        return "nasa/OrbitalElement/get_orbitalelement";
     }
 
     @GetMapping("/nasa/orbitalelements/getOribitalElementByObject")
@@ -44,13 +44,13 @@ public class NASAOrbitalElementController {
             return "result";
         } catch (RestException e){
             model.addAttribute("error", e.getMessage());
-            return "nasa/orbitalelement/index";
+            return "nasa/OrbitalElement/index";
         }
     }
 
     @GetMapping("/nasa/orbitalelements/showGetOrbitalElementById")
     public String showGetOrbitalElementId(){
-        return "nasa/orbitalElement/get_orbitalelementid";
+        return "nasa/OrbitalElement/get_orbitalelementid";
     }
 
     @GetMapping("/nasa/orbitalelements/getOrbitalElementById")
@@ -61,7 +61,7 @@ public class NASAOrbitalElementController {
             return "result";
         }catch (RestException e){
             model.addAttribute("error", e.getMessage());
-            return "nasa/orbitalelement/index";
+            return "nasa/OrbitalElement/index";
         }
     }
 }
