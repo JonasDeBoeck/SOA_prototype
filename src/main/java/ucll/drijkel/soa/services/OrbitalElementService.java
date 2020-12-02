@@ -16,7 +16,7 @@ import java.util.Collections;
 
 @Service
 public class OrbitalElementService {
-    private final String url = "http://localhost:8002/orbitalelements";
+    private final String url = "https://serene-reaches-31895.herokuapp.com/orbitalelements/";
 
     public OrbitalElementService() {}
 
@@ -112,7 +112,7 @@ public class OrbitalElementService {
         map.add("username", username);
         map.add("password", password);
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
-        ResponseEntity<String> response = restTemplate.postForEntity( "http://localhost:8002/account/register", request , String.class );
+        ResponseEntity<String> response = restTemplate.postForEntity( "https://serene-reaches-31895.herokuapp.com//account/register", request , String.class );
     }
 
     public JSONObject getKey(String username, String password) {
@@ -123,7 +123,7 @@ public class OrbitalElementService {
         map.add("username", username);
         map.add("password", password);
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
-        ResponseEntity<String> response = restTemplate.postForEntity( "http://localhost:8002/api-token-auth/", request , String.class );
+        ResponseEntity<String> response = restTemplate.postForEntity( "https://serene-reaches-31895.herokuapp.com//api-token-auth/", request , String.class );
         return new JSONObject(response.getBody());
     }
 }
