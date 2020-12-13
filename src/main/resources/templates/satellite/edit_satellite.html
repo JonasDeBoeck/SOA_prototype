@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Stars Index</title>
+    <title>Edit satellite</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -30,7 +30,7 @@
                 <a class="nav-link" href="/orbitalelements">OrbitalElements API</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/meteorites">Meteorite Landings API</a>
+                <a class="nav-link" href="/satellite">Satellites API</a>
             </li>
             <div class="dropdown nav-item">
                 <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,43 +48,27 @@
 </header>
 <div class="d-flex justify-content-center mt-3">
     <main class="w-75">
-        <th:block th:if="${error != null}">
-            <p th:text="${error}" class="alert alert-danger" role="alert">
-            </p>
-        </th:block>
-        <th:block th:if="${info != null}">
-            <p th:text="${info}" class="alert alert-info" role="alert">
-            </p>
-        </th:block>
-        <ul class="w-100 pl-0">
-            <li class="list-group-item">
-                <a href="/star/getstars" class="d-block w-100">Get all stars</a>
-            </li>
-            <li class="list-group-item">
-                <a href="/star/getstarsdetailed" class="d-block w-100">Get all stars detailed</a>
-            </li>
-            <li class="list-group-item">
-                <a href="/star/showgetstar" class="d-block w-100">Get star information</a>
-            </li>
-            <li class="list-group-item">
-                <a href="/star/showgetstardetailed" class="d-block w-100">Get detailed star information</a>
-            </li>
-            <li class="list-group-item">
-                <a href="/star/showaddstar" class="d-block w-100">Add star</a>
-            </li >
-            <li class="list-group-item">
-                <a href="/star/showdeletestar" class="d-block w-100">Delete star</a>
-            </li>
-            <li class="list-group-item">
-                <a href="/star/showeditstar" class="d-block w-100">Edit star</a>
-            </li>
-            <li class="list-group-item">
-                <a href="/star/showregister" class="d-block w-100">Register an account</a>
-            </li>
-            <li class="list-group-item">
-                <a href="/star/showgetkey" class="d-block w-100">Request your key</a>
-            </li>
-        </ul>
+        <form action="/satellite/editSatellite" method="post" class="w-100" th:object="${satellite}">
+            <div>
+                <p th:errors="*{name}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{launch_location}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{launch_date}" class="alert alert-danger" role="alert"></p>
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" th:field="*{name}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="launch_location">Launch location:</label>
+                <input type="text" th:field="*{launch_location}" required class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="launch_date">Launch date:</label>
+                <input type="date" th:field="*{launch_date}" class="form-control">
+            </div>
+            <input type="hidden" th:field="*{id}">
+            <input type="submit" class="btn btn-primary mb-2"/>
+        </form>
     </main>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

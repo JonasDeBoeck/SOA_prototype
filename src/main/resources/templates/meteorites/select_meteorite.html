@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title><!DOCTYPE html>
+
         <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <title>Select planet</title>
+            <title>Select orbitalelement</title>
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
                   integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
             <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -44,6 +41,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="/nasa/library">NASA Image and Video Library</a>
                         <a class="dropdown-item" href="/nasa/EONET">NASA EONOET</a>
+                        <a class="dropdown-item" href="/nasa/orbitalelements">NASA OrbitalElements</a>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </div>
@@ -53,9 +51,9 @@
 </header>
 <div class="d-flex justify-content-center mt-3">
     <main class="w-75">
-        <form action="/planets/editPlanet" method="get" class="w-100">
+        <form action="/meteorites/editMeteorite" method="get" class="w-100">
             <p class="form-group">
-                <label for="id">Planet id:</label>
+                <label for="id">Meteorite id:</label>
                 <input type="number" id="id" name="id" required class="form-control">
             </p>
             <input type="submit" class="btn btn-primary mb-2"/>

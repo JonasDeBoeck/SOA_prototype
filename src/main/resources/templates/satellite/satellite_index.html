@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Planets Index</title>
+    <title>Satellites Index</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -19,32 +19,31 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top justify-content-between">
-        <div>
-            <ul class="navbar-nav d-flex flex-row">
-                <li class="nav-item">
-                    <a class="nav-link" href="/star">Star API</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/planets">Planets API</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/orbitalelements">OrbitalElements API</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/meteorites">Meteorite Landings API</a>
-                </li>
-                <div class="dropdown nav-item">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        NASA API's
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="/nasa/library">NASA Image and Video Library</a>
-                        <a class="dropdown-item" href="/nasa/EONET">NASA EONOET</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
+        <ul class="navbar-nav d-flex flex-row">
+            <li class="nav-item">
+                <a class="nav-link" href="/star">Star API</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/planets">Planets API</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/orbitalelements">OrbitalElements API</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/satellite">Satellites API</a>
+            </li>
+            <div class="dropdown nav-item">
+                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    NASA API's
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="/nasa/library">NASA Image and Video Library</a>
+                    <a class="dropdown-item" href="/nasa/EONET">NASA EONOET</a>
+                    <a class="dropdown-item" href="/nasa/orbitalelements">NASA OrbitalElements</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
                 </div>
-            </ul>
-        </div>
+            </div>
+        </ul>
     </nav>
 </header>
 <div class="d-flex justify-content-center mt-3">
@@ -59,25 +58,19 @@
         </th:block>
         <ul class="w-100 pl-0">
             <li class="list-group-item">
-                <a href="/planets/getplanets" class="d-block w-100">Get all planets</a>
+                <a href="/satellite/getSatellites" class="d-block w-100">Get all satellites</a>
             </li>
             <li class="list-group-item">
-                <a href="/planets/showGetPlanet" class="d-block w-100">Get planet by id</a>
+                <a href="/satellite/showGetSatellite" class="d-block w-100">Get satellite</a>
             </li>
             <li class="list-group-item">
-                <a href="/planets/showAddPlanet" class="d-block w-100">Add planet</a>
+                <a href="/satellite/showAddSatellite" class="d-block w-100">Add satellite</a>
             </li >
             <li class="list-group-item">
-                <a href="/planets/showDeletePlanet" class="d-block w-100">Delete Planet</a>
+                <a href="/satellite/showDeleteSatellite" class="d-block w-100">Delete satellite</a>
             </li>
             <li class="list-group-item">
-                <a href="/planets/showEditPlanet" class="d-block w-100">Edit planet</a>
-            </li>
-            <li class="list-group-item">
-                <a href="/planets/showRegister" class="d-block w-100">Register an account</a>
-            </li>
-            <li class="list-group-item">
-                <a href="/planets/showRequestKey" class="d-block w-100">Request your key</a>
+                <a href="/satellite/showEditSatellite" class="d-block w-100">Edit satellite</a>
             </li>
         </ul>
     </main>

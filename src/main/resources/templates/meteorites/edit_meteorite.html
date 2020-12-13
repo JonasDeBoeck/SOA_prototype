@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Edit planet</title>
+    <title>Edit orbitalelement</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -40,6 +40,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="/nasa/library">NASA Image and Video Library</a>
                         <a class="dropdown-item" href="/nasa/EONET">NASA EONOET</a>
+                        <a class="dropdown-item" href="/nasa/orbitalelements">NASA OrbitalElements</a>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </div>
@@ -49,43 +50,58 @@
 </header>
 <div class="d-flex justify-content-center mt-3">
     <main class="w-75">
-        <form action="/planets/editPlanet" method="post" class="w-100" th:object="${planet}">
+        <form action="/orbitalelements/editOrbitalElement" method="post" class="w-100" th:object="${orbitalelement}">
             <div>
                 <p th:errors="*{name}" class="alert alert-danger" role="alert"></p>
-                <p th:errors="*{diameter}" class="alert alert-danger" role="alert"></p>
-                <p th:errors="*{moons}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{id}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{nametype}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{recclass}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{mass}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{fall}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{year}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{reclat}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{reclong}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{geoLocation}" class="alert alert-danger" role="alert"></p>
             </div>
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" th:field="*{name}" required class="form-control">
             </div>
             <div class="form-group">
-                <label for="rotation_speed">Rotation speed:</label>
-                <input type="text" th:field="*{rotation_speed}" required class="form-control" />
+                <label for="id">ID:</label>
+                <input type="number" th:field="*{id}" required class="form-control" />
             </div>
             <div class="form-group">
-                <label for="athmosphere_main_components">Atmosphere main components:</label>
-                <input type="text" th:field="*{atmosphere_main_components}" required class="form-control">
+                <label for="nametype">Nametype:</label>
+                <input type="text" th:field="*{nametype}" required class="form-control">
             </div>
             <div class="form-group">
-                <label for="distance_from_sun">Distance from the sun:</label>
-                <input type="number" th:field="*{distance_from_sun}" required class="form-control">
+                <label for="recclass">Recclass:</label>
+                <input type="number" th:field="*{recclass}" required class="form-control">
             </div>
             <div class="form-group">
-                <label for="period_of_revolution">Period of revolution</label>
-                <input type="number" th:field="*{period_of_revolution}" required class="form-control">
+                <label for="mass">Mass:</label>
+                <input type="number" th:field="*{mass}" required class="form-control">
             </div>
             <div class="form-group">
-                <label for="moons">Number of moons:</label>
-                <input type="number" th:field="*{moons}" required class="form-control">
+                <label for="fall">Fall:</label>
+                <input type="text" th:field="*{fall}" required class="form-control">
             </div>
             <div class="form-group">
-                <label for="rings">Number of rings:</label>
-                <input type="number" th:field="*{rings}" required class="form-control">
+                <label for="year">Year:</label>
+                <input type="number" th:field="*{year}" required class="form-control">
             </div>
             <div class="form-group">
-                <label for="diameter">Diameter:</label>
-                <input type="number" th:field="*{diameter}" required class="form-control">
+                <label for="reclat">Reclat:</label>
+                <input type="number" th:field="*{reclat}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="reclong">Reclong:</label>
+                <input type="number" th:field="*{reclong}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="geoLocation">GeoLocation:</label>
+                <input type="text" th:field="*{geoLocation" required class="form-control">
             </div>
             <div class="form-group">
                 <label for="api_key">API key:</label>

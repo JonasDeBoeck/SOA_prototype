@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Planets Index</title>
+    <title>Delete orbitalelement</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -40,6 +40,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="/nasa/library">NASA Image and Video Library</a>
                         <a class="dropdown-item" href="/nasa/EONET">NASA EONOET</a>
+                        <a class="dropdown-item" href="/nasa/orbitalelements">NASA OrbitalElements</a>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </div>
@@ -49,37 +50,17 @@
 </header>
 <div class="d-flex justify-content-center mt-3">
     <main class="w-75">
-        <th:block th:if="${error != null}">
-            <p th:text="${error}" class="alert alert-danger" role="alert">
+        <form action="/meteorites/deleteMeteorite" method="post" class="w-100">
+            <p class="form-group">
+                <label for="id">Meteorite id:</label>
+                <input type="number" id="id" name="id" required class="form-control">
             </p>
-        </th:block>
-        <th:block th:if="${info != null}">
-            <p th:text="${info}" class="alert alert-info" role="alert">
+            <p class="form-group">
+                <label for="api_key">API key:</label>
+                <input type="text" id="api_key" name="api_key" required class="form-control">
             </p>
-        </th:block>
-        <ul class="w-100 pl-0">
-            <li class="list-group-item">
-                <a href="/planets/getplanets" class="d-block w-100">Get all planets</a>
-            </li>
-            <li class="list-group-item">
-                <a href="/planets/showGetPlanet" class="d-block w-100">Get planet by id</a>
-            </li>
-            <li class="list-group-item">
-                <a href="/planets/showAddPlanet" class="d-block w-100">Add planet</a>
-            </li >
-            <li class="list-group-item">
-                <a href="/planets/showDeletePlanet" class="d-block w-100">Delete Planet</a>
-            </li>
-            <li class="list-group-item">
-                <a href="/planets/showEditPlanet" class="d-block w-100">Edit planet</a>
-            </li>
-            <li class="list-group-item">
-                <a href="/planets/showRegister" class="d-block w-100">Register an account</a>
-            </li>
-            <li class="list-group-item">
-                <a href="/planets/showRequestKey" class="d-block w-100">Request your key</a>
-            </li>
-        </ul>
+            <input type="submit" class="btn btn-primary mb-2"/>
+        </form>
     </main>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
