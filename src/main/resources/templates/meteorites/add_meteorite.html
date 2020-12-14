@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Add orbitalelement</title>
+    <title>Add Meteorite landing</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -33,6 +33,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/meteorites">Meteorite Landings API</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/satellite">Satellite API</a>
+                </li>
                 <div class="dropdown nav-item">
                     <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         NASA API's
@@ -41,7 +44,7 @@
                         <a class="dropdown-item" href="/nasa/library">NASA Image and Video Library</a>
                         <a class="dropdown-item" href="/nasa/EONET">NASA EONOET</a>
                         <a class="dropdown-item" href="/nasa/orbitalelements">NASA OrbitalElements</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="/nasa/weather">NASA Mars Weather </a>
                     </div>
                 </div>
             </ul>
@@ -53,7 +56,7 @@
         <form action="/meteorites/addMeteorite" method="post" class="w-100" th:object="${meteorite}">
             <div>
                 <p th:errors="*{name}" class="alert alert-danger" role="alert"></p>
-                <p th:errors="*{id}" class="alert alert-danger" role="alert"></p>
+                <p th:errors="*{id_model}" class="alert alert-danger" role="alert"></p>
                 <p th:errors="*{nametype}" class="alert alert-danger" role="alert"></p>
                 <p th:errors="*{recclass}" class="alert alert-danger" role="alert"></p>
                 <p th:errors="*{mass}" class="alert alert-danger" role="alert"></p>
@@ -68,8 +71,8 @@
                 <input type="text" th:field="*{name}" required class="form-control">
             </div>
             <div class="form-group">
-                <label for="id">ID:</label>
-                <input type="number" th:field="*{id}" required class="form-control" />
+                <label for="id_model">ID:</label>
+                <input type="number" th:field="*{id_model}" required class="form-control" />
             </div>
             <div class="form-group">
                 <label for="nametype">Nametype:</label>
@@ -77,7 +80,7 @@
             </div>
             <div class="form-group">
                 <label for="recclass">Recclass:</label>
-                <input type="number" th:field="*{recclass}" required class="form-control">
+                <input type="text" th:field="*{recclass}" required class="form-control">
             </div>
             <div class="form-group">
                 <label for="mass">Mass:</label>
@@ -101,11 +104,11 @@
             </div>
             <div class="form-group">
                 <label for="geoLocation">GeoLocation:</label>
-                <input type="text" th:field="*{geoLocation" required class="form-control">
+                <input type="text" th:field="*{geoLocation}" required class="form-control">
             </div>
             <div class="form-group">
                 <label for="api_key">API key:</label>
-                <input type="text" id="api_key" name="api_key" required class="form-control">
+                <input type="text" id="api_key" name="api_key" class="form-control">
             </div>
             <input type="submit" class="btn btn-primary mb-2"/>
         </form>

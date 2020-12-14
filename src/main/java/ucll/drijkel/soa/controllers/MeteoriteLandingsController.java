@@ -60,8 +60,9 @@ public class MeteoriteLandingsController {
     @PostMapping("/meteorites/register")
     public String register(Model model, WebRequest webRequest){
         String username = webRequest.getParameter("username");
-        String password = webRequest.getParameter("password");
-        meteoriteLandingsService.register(username,password);
+        String password1 = webRequest.getParameter("password1");
+        String password2 = webRequest.getParameter("password2");
+        meteoriteLandingsService.register(username,password1, password2);
         model.addAttribute("info", "Account created succesfully, now you can go and request your api-key");
         return "meteorites/meteorites_index";
     }

@@ -21,8 +21,28 @@ public class NASAWeatherController {
 
     @GetMapping("/nasa/weather")
     public String showIndex(){
-        return "nasa/EONET/index";
+        return "nasa/weather/index";
     }
+
+    @GetMapping("/nasa/weather/allData")
+    public String showAllData(Model model){
+        JSONObject result = service.getAllData();
+        model.addAttribute("result", result);
+        return "result";
+    }
+
+    @GetMapping("/nasa/weather/validKeys")
+    public String showValidKeys(Model model){
+        Object result = service.getValidSolKeys();
+        model.addAttribute("result", result);
+        return "result";
+    }
+
+    @GetMapping("/nasa/weather/windrose")
+    public String showWindRose(){
+        return "nasa/weather/MarsWindRose";
+    }
+
 
 
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Nasa Image and Video Library Index</title>
+    <title>Nasa Weather on Mars</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -51,29 +51,25 @@
         </div>
     </nav>
 </header>
+
 <div class="d-flex justify-content-center mt-3">
     <main class="w-75">
         <th:block th:if="${error != null}">
-            <p th:text="${error}" class="alert alert-danger" role="alert">
-            </p>
+            <p th:text="${error}" class="alert alert-danger" role="alert"></p>
         </th:block>
         <ul class="w-100 pl-0">
             <li class="list-group-item">
-                <a href="/nasa/library/showSearch" class="d-block w-100">Perform an operation search</a>
+                <a href="/nasa/weather/allData" class="d-block w-100">Show all data</a>
             </li>
             <li class="list-group-item">
-                <a href="/nasa/library/showNasaId" class="d-block w-100">Get all NASA-ID's from an operation</a>
+                <a href="/nasa/weather/validKeys" class="d-block w-100">Show valid keys. </a><p>(This is based on available data. No valid keys = no reliable data)</p>
             </li>
             <li class="list-group-item">
-                <a href="/nasa/library/showAssetSearch" class="d-block w-100">Get all media from a certain operation</a>
-            </li>
-            <li class="list-group-item">
-                <a href="/nasa/library/showCaptionSearch" class="d-block w-100">Perform a search for an asset's captions</a>
-            </li>
-            <li class="list-group-item">
-                <a href="/nasa/library/showMetadataSearch" class="d-block w-100">Perform a search for an asset's metadata</a>
+                <a href="/nasa/weather/windrose" class="d-block w-100">Show me a plotted windrose. </a><p>(This is based on available data. No valid keys = no windrose to draw)</p>
             </li>
         </ul>
+            <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='800' height='530'  scrolling='no' frameborder='0'></iframe>
+            <img src="https://mars.nasa.gov/rss/api/images/insight_marsweather_plot.png"  width='800' alt="Image with available data points">
     </main>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

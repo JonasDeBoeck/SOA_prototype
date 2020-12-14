@@ -3,9 +3,10 @@ package ucll.drijkel.soa.model;
 
 public class Meteorite {
     private String name;
+    private int id_model;
     private int id;
     private String nametype;
-    private double recclass;
+    private String recclass;
     private double mass;
     private String fall;
     private int year;
@@ -13,12 +14,35 @@ public class Meteorite {
     private double reclong;
     private String geoLocation;
 
+    public Meteorite(int id, String name, int id_model, String nametype, String recclass, double mass, String fall, int year, double reclat, double reclong, String geoLocation) {
+        this.name = name;
+        this.id_model = id_model;
+        this.nametype = nametype;
+        this.recclass = recclass;
+        this.mass = mass;
+        this.fall = fall;
+        this.year = year;
+        this.reclat = reclat;
+        this.reclong = reclong;
+        this.geoLocation = geoLocation;
+        this.id = id;
+    }
+
     public Meteorite(){}
+
+    public int getId_model() {
+        return id_model;
+    }
+
+    public void setId_model(int id_model) {
+        this.id_model = id_model;
+    }
 
     @Override
     public String toString() {
-        return "{" + 
-                "id:" + id +
+        return "{" +
+                "id:" + id+
+                "id_model:" + id_model +
                 ", name: " + name +
                 ", nametype: " + nametype +
                 ", recclass: " + recclass +
@@ -43,7 +67,7 @@ public class Meteorite {
         return id;
     }
 
-    public void setId(int name) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -55,11 +79,11 @@ public class Meteorite {
         this.nametype = nametype;
     }
 
-    public double getRecclass() {
+    public String getRecclass() {
         return recclass;
     }
 
-    public void setRecclass(double recclass) {
+    public void setRecclass(String recclass) {
         this.recclass = recclass;
     }
 
