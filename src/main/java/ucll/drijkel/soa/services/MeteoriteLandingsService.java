@@ -21,15 +21,6 @@ public class MeteoriteLandingsService {
 
     public MeteoriteLandingsService() {}
 
-    public void authenticate(Meteorite meteorite, String apiKey){
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-        headers.set("Authorization","Token " + apiKey);
-        HttpEntity<Meteorite> request = new HttpEntity<>(meteorite, headers);
-    }
-
     public Meteorite getMeteorite(int id) {
         RestTemplate restTemplate = new RestTemplate();
         try {

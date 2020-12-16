@@ -8,7 +8,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import ucll.drijkel.soa.model.Meteorite;
-import ucll.drijkel.soa.model.Planet;
 import ucll.drijkel.soa.model.RestException;
 import ucll.drijkel.soa.services.MeteoriteLandingsService;
 
